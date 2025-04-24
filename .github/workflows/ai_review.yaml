@@ -38,4 +38,9 @@ jobs:
                     🤖 **AI Code Review**
 
                     ${{ env.REVIEW }}
-
+            - name: Run python script
+              env:
+                GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+                PR_NUMBER: ${{ github.event.pull_request.number }}
+                REPO: ${{ github.repository }}
+              run: python .github/workflows/test.py
